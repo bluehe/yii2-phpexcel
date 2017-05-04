@@ -117,9 +117,9 @@ use yii\i18n\Formatter;
  *
  * ~~~
  *
- * $data = \moonland\phpexcel\Excel::import($fileName, $config); // $config is an optional
+ * $data = \bluehe\phpexcel\Excel::import($fileName, $config); // $config is an optional
  *
- * $data = \moonland\phpexcel\Excel::widget([
+ * $data = \bluehe\phpexcel\Excel::widget([
  * 		'mode' => 'import',
  * 		'fileName' => $fileName,
  * 		'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
@@ -127,7 +127,7 @@ use yii\i18n\Formatter;
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
  * ]);
  *
- * $data = \moonland\phpexcel\Excel::import($fileName, [
+ * $data = \bluehe\phpexcel\Excel::import($fileName, [
  * 		'setFirstRecordAsKeys' => true, // if you want to set the keys of record column with first record, if it not set, the header with use the alphabet column on excel.
  * 		'setIndexSheetByName' => true, // set this if your excel data with multiple worksheet, the index of array will be set with the sheet name. If this not set, the index will use numeric.
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
@@ -135,7 +135,7 @@ use yii\i18n\Formatter;
  *
  * // import data with multiple file.
  *
- * $data = \moonland\phpexcel\Excel::widget([
+ * $data = \bluehe\phpexcel\Excel::widget([
  * 		'mode' => 'import',
  * 		'fileName' => [
  * 			'file1' => $fileName1,
@@ -147,7 +147,7 @@ use yii\i18n\Formatter;
  * 		'getOnlySheet' => 'sheet1', // you can set this property if you want to get the specified sheet from the excel data with multiple worksheet.
  * ]);
  *
- * $data = \moonland\phpexcel\Excel::import([
+ * $data = \bluehe\phpexcel\Excel::import([
  * 			'file1' => $fileName1,
  * 			'file2' => $fileName2,
  * 			'file3' => $fileName3,
@@ -166,32 +166,32 @@ use yii\i18n\Formatter;
  * // only one sheet or specified sheet.
  *
  * Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2));
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2));
  *
  * // data with multiple worksheet
  *
  * Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)));
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)));
  *
  * // data with multiple file and specified sheet or only one worksheet
  *
  * Array([file1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)),
  * [file2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)));
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)));
  *
  * // data with multiple file and multiple worksheet
  *
  * Array([file1] => Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2))),
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2))),
  * [file2] => Array([Sheet1] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2)),
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2)),
  * [Sheet2] => Array([0] => Array([name] => Anam, [email] => moh.khoirul.anaam@gmail.com, [framework interest] => Yii2),
- * [1] => Array([name] => Example, [email] => example@moonlandsoft.com, [framework interest] => Yii2))));
+ * [1] => Array([name] => Example, [email] => example@bluehesoft.com, [framework interest] => Yii2))));
  *
  * ~~~
  *
@@ -206,6 +206,9 @@ use yii\i18n\Formatter;
  * @property string|array $fileName is a name for file name to export or import. Multiple file name only use for import mode, not work if you use the export mode.
  * @property string $savePath is a directory to save the file or you can blank this to set the file as attachment.
  * @property string $format for excel to export. Valid value are 'Excel5','Excel2007','Excel2003XML','00Calc','Gnumeric'.
+ * @property array $style for all excel.
+ * @property boolean|array $headerTitle to set the header title row on the fitst line.
+ * @property boolean|array $firstTitle to set the first title row on the fitst line.
  * @property boolean $setFirstTitle to set the title column on the first line. The columns will have a header on the first line.
  * @property boolean $asAttachment to set the file excel to download mode.
  * @property boolean $setFirstRecordAsKeys to set the first record on excel file to a keys of array per line.
@@ -280,7 +283,7 @@ class Excel extends \yii\base\Widget {
     public $headerTitle;
 
     /**
-     * @var boolean|array to set the header title row on the fitst line..
+     * @var boolean|array to set the first title row on the fitst line..
      */
     public $firstTitle;
 
@@ -773,7 +776,7 @@ class Excel extends \yii\base\Widget {
      *
      * ~~~
      *
-     * \moonland\phpexcel\Excel::export([
+     * \bluehe\phpexcel\Excel::export([
      * 		'models' => $allModels,
      * 		'columns' => ['column1','column2','column3'],
      * 		//without header working, because the header will be get label from attribute label.
@@ -789,7 +792,7 @@ class Excel extends \yii\base\Widget {
      *
      * ~~~
      *
-     * \moonland\phpexcel\Excel::export([
+     * \bluehe\phpexcel\Excel::export([
      *  	'models' => Post::find()->all(),
      *     	'columns' => [
      *     		'author.name:text:Author Name',
@@ -828,7 +831,7 @@ class Excel extends \yii\base\Widget {
      *
      * ~~~
      *
-     * $data = \moonland\phpexcel\Excel::import($fileName, ['setFirstRecordAsKeys' => true]);
+     * $data = \bluehe\phpexcel\Excel::import($fileName, ['setFirstRecordAsKeys' => true]);
      *
      * ~~~
      *

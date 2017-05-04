@@ -31,11 +31,11 @@ string `$savePath` is a directory to save the file or you can blank this to set 
 
 string `$format` for excel to export. Valid value are 'Excel5', 'Excel2007', 'Excel2003XML', '00Calc', 'Gnumeric'.
 
-array $style for all excel.
+array `$style` for all excel.
 
-boolean|array $headerTitle to set the header title row on the fitst line.
+boolean|array `$headerTitle` to set the header title row on the fitst line.
 
-boolean|array $firstTitle to set the first title row on the fitst line.
+boolean|array `$firstTitle` to set the first title row on the fitst line.
 
 boolean `$setFirstTitle` to set the title column on the first line. The columns will have a header on the first line.
 

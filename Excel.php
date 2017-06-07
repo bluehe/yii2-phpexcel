@@ -499,7 +499,11 @@ class Excel extends \yii\base\Widget {
      * @return multitype:multitype:array
      */
     public function executeArrayLabel($sheetData) {
-        $keys = ArrayHelper::remove($sheetData, '1');
+        if ($this->headerTitle) {
+            $keys = ArrayHelper::remove($sheetData, '2');
+        } else {
+            $keys = ArrayHelper::remove($sheetData, '1');
+        }
 
         $new_data = [];
 
@@ -692,6 +696,7 @@ class Excel extends \yii\base\Widget {
                 $objectPhpExcel->setActiveSheetIndexByName($sheetName);
                 $indexed = $this->setIndexSheetByName == true ? $sheetName : $sheetIndex;
                 $sheetDatas[$indexed] = $objectPhpExcel->getActiveSheet()->toArray(null, true, true, true);
+
                 if ($this->setFirstRecordAsKeys) {
                     $sheetDatas[$indexed] = $this->executeArrayLabel($sheetDatas[$indexed]);
                 }
@@ -708,6 +713,9 @@ class Excel extends \yii\base\Widget {
             }
         } else {
             $sheetDatas = $objectPhpExcel->getActiveSheet()->toArray(null, true, true, true);
+            if ($this->headerTitle) {
+                ArrayHelper::remove($sheetDatas, '1');
+            }
             if ($this->setFirstRecordAsKeys) {
                 $sheetDatas = $this->executeArrayLabel($sheetDatas);
             }

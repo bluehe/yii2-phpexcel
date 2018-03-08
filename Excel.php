@@ -378,6 +378,7 @@ class Excel extends \yii\base\Widget {
                 case 'fill_color':
                     $activeStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
                     $activeStyle->getFill()->getStartColor()->setARGB($value);
+                     break;
                 case 'from_array':
                     $activeStyle->applyFromArray($value);
                     break;

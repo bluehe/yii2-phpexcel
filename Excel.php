@@ -352,7 +352,7 @@ class Excel extends \yii\base\Widget {
         }
     }
 
-    public function executeStyle(&$activeSheet = null, $col = null, $row = null, $style = []) {
+    public function executeStyle(&$activeSheet = null, $col = null, $row = null, $style = [],$model=null) {
         if ($activeSheet == null) {
             $activeSheet = $this->activeSheet;
         }
@@ -373,9 +373,15 @@ class Excel extends \yii\base\Widget {
                     $activeStyle->getFont()->setSize($value);
                     break;
                 case 'font_color':
+                    if (!is_string($value)) {
+                        $value = call_user_func($value, $model, $this);                       
+                    }
                     $activeStyle->getFont()->getColor()->applyFromArray($value);
                     break;
                 case 'fill_color':
+                    if (!is_string($value)) {
+                        $value = call_user_func($value, $model, $this);                       
+                    }
                     $activeStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
                     $activeStyle->getFill()->getStartColor()->setARGB($value);
                      break;
@@ -493,7 +499,7 @@ class Excel extends \yii\base\Widget {
                 }
                 $activeSheet->setCellValue($col . $row, $column_value);
                 if (isset($column['style'])) {
-                    $this->executeStyle($activeSheet, $col, $row, $column['style']);
+                    $this->executeStyle($activeSheet, $col, $row, $column['style'],$model);
                 }
                 $colnum++;
             }

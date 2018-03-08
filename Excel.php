@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
 use yii\base\InvalidParamException;
 use yii\i18n\Formatter;
+use PHPExcel_Style_Fill;
 
 /**
  * Excel Widget for generate Excel File or for load Excel File.
@@ -374,6 +375,10 @@ class Excel extends \yii\base\Widget {
                 case 'font_color':
                     $activeStyle->getFont()->getColor()->applyFromArray($value);
                     break;
+                case 'fill_color':
+                    $activeStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+                    $activeStyle->getFill()->getStartColor()->setARGB($value[0]);
+                    $activeStyle->getFill()->getEndColor()->setARGB(isset($value[1])?$value[1]:$value[0]);
                 case 'from_array':
                     $activeStyle->applyFromArray($value);
                     break;

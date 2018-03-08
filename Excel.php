@@ -371,6 +371,9 @@ class Excel extends \yii\base\Widget {
                 case 'font_size':
                     $activeStyle->getFont()->setSize($value);
                     break;
+                case 'font_color':
+                    $activeStyle->getFont()->getColor()->applyFromArray($value);
+                    break;
                 case 'from_array':
                     $activeStyle->applyFromArray($value);
                     break;

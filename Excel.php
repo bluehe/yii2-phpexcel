@@ -376,7 +376,7 @@ class Excel extends \yii\base\Widget {
                     if (!is_string($value)) {
                         $value = call_user_func($value, $model, $this);                       
                     }
-                    $activeStyle->getFont()->getColor()->applyFromArray($value);
+                    $activeStyle->getFont()->getColor()->setARGB($value);
                     break;
                 case 'fill_color':
                     if (!is_string($value)) {

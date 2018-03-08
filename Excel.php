@@ -394,6 +394,9 @@ class Excel extends \yii\base\Widget {
                 case 'alignment_vertical':
                     $activeStyle->getAlignment()->setVertical($value);
                     break;
+                case 'wrap_text':
+                    $activeStyle->getAlignment()->setWrapText($value);
+                    break;
                 case 'row_height':
                     $row == null ? $activeSheet->getDefaultRowDimension()->setRowHeight($value) : $activeSheet->getRowDimension($row)->setRowHeight($value);
                     break;
